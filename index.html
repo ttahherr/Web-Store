@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />    
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./index.js" defer></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4F46E5", // Indigo 600
+              secondary: "#1F2937", // Gray 800
+            },
+            animation: {
+              "fade-in": "fadeIn 0.5s ease-out",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0", transform: "translateY(10px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans main-layout">
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-3 items-center h-16">
+          <div class="flex items-center justify-start">
+            <a
+              href="#"
+              onclick="navigateTo('home')"
+              class="flex items-center gap-2"
+            >
+              <i class="fa-solid fa-wave-square text-primary text-2xl"></i>
+              <span class="font-bold text-xl tracking-tight text-secondary"
+                >ShopWave</span
+              >
+            </a>
+          </div>
+
+          <div class="hidden md:flex justify-center space-x-8">
+            <a
+              href="#"
+              onclick="navigateTo('home')"
+              class="text-gray-600 hover:text-primary transition font-medium"
+              >Home</a
+            >
+            <a
+              href="#"
+              onclick="navigateTo('products')"
+              class="text-gray-600 hover:text-primary transition font-medium"
+              >Products</a
+            >
+            <a
+              href="#"
+              onclick="navigateTo('login')"
+              class="text-gray-600 hover:text-primary transition font-medium"
+              >Login</a
+            >
+          </div>
+
+          <div class="flex items-center justify-end space-x-6">
+            <div
+              class="relative cursor-pointer group"
+              onclick="navigateTo('cart')"
+            >
+              <i
+                class="fa-solid fa-cart-shopping text-xl text-gray-600 group-hover:text-primary transition"
+              ></i>
+              <span
+                id="cart-count"
+                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transform scale-0 transition-transform duration-200"
+                >0</span
+              >
+            </div>
+            <div class="cursor-pointer group">
+              <i
+                class="fa-solid fa-user text-xl text-gray-600 group-hover:text-primary transition"
+              ></i>
+            </div>
+            <button
+              class="md:hidden text-gray-600 focus:outline-none"
+              onclick="toggleMobileMenu()"
+            >
+              <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t p-4 flex flex-col space-y-4 shadow-lg"
+      >
+        <a
+          href="#"
+          onclick="navigateTo('home'); toggleMobileMenu()"
+          class="text-gray-600 hover:text-primary"
+          >Home</a
+        >
+        <a
+          href="#"
+          onclick="navigateTo('products'); toggleMobileMenu()"
+          class="text-gray-600 hover:text-primary"
+          >Products</a
+        >
+        <a
+          href="#"
+          onclick="navigateTo('cart'); toggleMobileMenu()"
+          class="text-gray-600 hover:text-primary"
+          >Cart</a
+        >
+        <a
+          href="#"
+          onclick="navigateTo('login'); toggleMobileMenu()"
+          class="text-gray-600 hover:text-primary"
+          >Login</a
+        >
+      </div>
+    </nav>
+    <main class="w-full">
+        <section id="home" class="page-section active">
+      <!-- Hero Section -->
+      <div class="relative bg-gray-900 text-white overflow-hidden">
+        <div class="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Hero Background"
+            class="w-full h-full object-cover opacity-40"
+          />
+        </div>
+        <div
+          class="relative max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center"
+        >
+          <h1
+            class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-4"
+          >
+            Discover Your Style
+          </h1>
+          <p class="mt-4 text-xl max-w-2xl mx-auto text-gray-300">
+            Curated collections for the modern lifestyle. Quality meets
+            affordability in every stitch.
+          </p>
+          <div class="mt-10">
+            <button
+              onclick="navigateTo('products')"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-100 transition duration-300 transform hover:scale-105"
+            >
+              Shop Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Us Section -->
+      <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900">
+              Why Choose Us?
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div
+              class="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition duration-300"
+            >
+              <div
+                class="w-12 h-12 mx-auto bg-primary text-white rounded-full flex items-center justify-center mb-4"
+              >
+                <i class="fa-solid fa-truck-fast text-xl"></i>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900">Fast Delivery</h3>
+              <p class="mt-2 text-gray-500">
+                Get your products delivered to your doorstep in record time.
+              </p>
+            </div>
+            <div
+              class="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition duration-300"
+            >
+              <div
+                class="w-12 h-12 mx-auto bg-primary text-white rounded-full flex items-center justify-center mb-4"
+              >
+                <i class="fa-solid fa-gem text-xl"></i>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900">Premium Quality</h3>
+              <p class="mt-2 text-gray-500">
+                We source only the finest materials for our collections.
+              </p>
+            </div>
+            <div
+              class="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition duration-300"
+            >
+              <div
+                class="w-12 h-12 mx-auto bg-primary text-white rounded-full flex items-center justify-center mb-4"
+              >
+                <i class="fa-solid fa-headset text-xl"></i>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900">24/7 Support</h3>
+              <p class="mt-2 text-gray-500">
+                Our team is always here to assist you with any questions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Products Preview -->
+      <div class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-end mb-8">
+            <h2 class="text-3xl font-extrabold text-gray-900">Trending Now</h2>
+            <button
+              onclick="navigateTo('products')"
+              class="text-primary hover:text-indigo-800 font-medium flex items-center gap-1"
+            >
+              View All <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- Products Grid -->
+          <div
+            id="home-products-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+        </section>
+    </main>
+    <footer class="bg-gray-900 text-gray-300 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="flex flex-col space-y-4">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-wave-square text-primary text-2xl"></i>
+              <span class="font-bold text-xl text-white">ShopWave</span>
+            </div>
+            <p class="text-sm text-gray-400">
+              Making fashion accessible and affordable for everyone. Join the
+              wave of style.
+            </p>
+          </div>
+
+          <div class="flex flex-col space-y-4">
+            <h3 class="text-lg font-semibold text-white">Contact Us</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-location-dot"></i> 123 Fashion St, Design
+                City
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-phone"></i> +1 (555) 123-4567
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-envelope"></i> support@shopwave.com
+              </li>
+            </ul>
+          </div>
+
+          <div class="flex flex-col space-y-4">
+            <h3 class="text-lg font-semibold text-white">Follow Us</h3>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition duration-300"
+              >
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition duration-300"
+              >
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition duration-300"
+              >
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition duration-300"
+              >
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+          <p>&copy; 2026 ShopWave. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

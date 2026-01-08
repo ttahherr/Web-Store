@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4F46E5", // Indigo 600
+              secondary: "#1F2937", // Gray 800
+            },
+            animation: {
+              "fade-in": "fadeIn 0.5s ease-out",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0", transform: "translateY(10px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans main-layout">
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-3 items-center h-16">
+          <!-- Logo Section -->
+          <div class="flex items-center justify-start">
+            <a
+              href="#"
+              onclick="navigateTo('home')"
+              class="flex items-center gap-2"
+            >
+              <i class="fa-solid fa-wave-square text-primary text-2xl"></i>
+              <span class="font-bold text-xl tracking-tight text-secondary"
+                >ShopWave</span
+              >
+            </a>
+          </div>
+
+          <!-- Navigation Links (Desktop) -->
+          <div class="hidden md:flex justify-center space-x-8">
+            <a
+              href="#"
+              onclick="navigateTo('home')"
+              class="text-gray-600 hover:text-primary transition font-medium"
+              >Home</a
+            >
+            <a
+              href="#"
+              onclick="navigateTo('products')"
+              class="text-gray-600 hover:text-primary transition font-medium"
+              >Products</a
+            >
+            <a
+              href="#"
+              onclick="navigateTo('login')"
+              class="text-gray-600 hover:text-primary transition font-medium"
+              >Login</a
+            >
+          </div>
+
+          <!-- Icons Section -->
+          <div class="flex items-center justify-end space-x-6">
+            <div
+              class="relative cursor-pointer group"
+              onclick="navigateTo('cart')"
+            >
+              <i
+                class="fa-solid fa-cart-shopping text-xl text-gray-600 group-hover:text-primary transition"
+              ></i>
+              <span
+                id="cart-count"
+                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transform scale-0 transition-transform duration-200"
+                >0</span
+              >
+            </div>
+            <div class="cursor-pointer group">
+              <i
+                class="fa-solid fa-user text-xl text-gray-600 group-hover:text-primary transition"
+              ></i>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button
+              class="md:hidden text-gray-600 focus:outline-none"
+              onclick="toggleMobileMenu()"
+            >
+              <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu (Hidden by default) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t p-4 flex flex-col space-y-4 shadow-lg"
+      >
+        <a
+          href="#"
+          onclick="navigateTo('home'); toggleMobileMenu()"
+          class="text-gray-600 hover:text-primary"
+          >Home</a
+        >
+        <a
+          href="#"
+          onclick="navigateTo('products'); toggleMobileMenu()"
+          class="text-gray-600 hover:text-primary"
+          >Products</a
+        >
+        <a
+          href="#"
+          onclick="navigateTo('cart'); toggleMobileMenu()"
+          class="text-gray-600 hover:text-primary"
+          >Cart</a
+        >
+        <a
+          href="#"
+          onclick="navigateTo('login'); toggleMobileMenu()"
+          class="text-gray-600 hover:text-primary"
+          >Login</a
+        >
+      </div>
+    </nav>
+    <main class="w-full">
+      <section id="products" class="page-section">
+        <div class="bg-white shadow-sm mb-8">
+          <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl font-extrabold text-gray-900">
+              Our Collection
+            </h1>
+            <p class="mt-4 text-gray-500">Find what moves you.</p>
+          </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+          <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button
+              class="px-6 py-2 rounded-full bg-primary text-white shadow-md hover:bg-indigo-700 transition"
+            >
+              All
+            </button>
+            <button
+              class="px-6 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition"
+            >
+              New Arrivals
+            </button>
+            <button
+              class="px-6 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition"
+            >
+              Best Sellers
+            </button>
+            <button
+              class="px-6 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition"
+            >
+              Offers
+            </button>
+          </div>
+
+          <div
+            id="all-products-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-gray-900 text-gray-300 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="flex flex-col space-y-4">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-wave-square text-primary text-2xl"></i>
+              <span class="font-bold text-xl text-white">ShopWave</span>
+            </div>
+            <p class="text-sm text-gray-400">
+              Making fashion accessible and affordable for everyone. Join the
+              wave of style.
+            </p>
+          </div>
+
+          <div class="flex flex-col space-y-4">
+            <h3 class="text-lg font-semibold text-white">Contact Us</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-location-dot"></i> 123 Fashion St, Design
+                City
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-phone"></i> +1 (555) 123-4567
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-envelope"></i> support@shopwave.com
+              </li>
+            </ul>
+          </div>
+
+          <div class="flex flex-col space-y-4">
+            <h3 class="text-lg font-semibold text-white">Follow Us</h3>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition duration-300"
+              >
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition duration-300"
+              >
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition duration-300"
+              >
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition duration-300"
+              >
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+          <p>&copy; 2026 ShopWave. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="./index.js"></script>
+  </body>
+</html>
