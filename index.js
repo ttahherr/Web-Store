@@ -66,7 +66,7 @@ function saveCart() {
 
 function navigateTo(pageId) {
   const routes = {
-    home: "index.HTML",
+    index: "index.HTML",
     products: "Products.HTML",
     cart: "Cart.HTML",
     login: "Login.HTML",
