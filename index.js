@@ -67,9 +67,9 @@ function saveCart() {
 function navigateTo(pageId) {
   const routes = {
     index: "index.html",
-    products: "Products.HTML",
-    cart: "Cart.HTML",
-    login: "Login.HTML",
+    products: "Products.html",
+    cart: "Cart.html",
+    login: "Login.html",
   };
 
   // If we are already on the page, do nothing (optional optimization)
